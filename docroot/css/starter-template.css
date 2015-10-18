@@ -15,3 +15,11 @@ body {
   color: white;
   text-transform: uppercase;
 }
+
+.grid-item {
+  display: block;
+  max-width: 217px;
+  margin: 0 10px 10px 0;
+}
+
+.grid-item.width2 { max-width: 444px; }
