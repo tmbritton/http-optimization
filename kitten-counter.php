@@ -11,11 +11,14 @@ fclose($fh);
 foreach($out as $image_data) {
   $classes = 'grid-item';
   $rando = rand(1, 10);
+  $double = FALSE;
+  $path = 'small';
   if ($rando > 9) {
     $classes .= ' width2';
+    $path = 'medium';
   }
-  $html = '<a href="images/original/' . $image_data['FileName'] . '" data-lightbox="kittens" data-title="' . $image_data['FileName'] . '">' . "\n";
-  $html .= "\t" . '<img class="' . $classes . '" src="images/original/' . $image_data['FileName'] . '" alt="">' . "\n";
+  $html = '<a href="images/large/' . $image_data['FileName'] . '" data-lightbox="kittens" data-title="' . $image_data['FileName'] . '">' . "\n";
+  $html .= "\t" . '<img class="' . $classes . '" src="images/' . $path . '/' . $image_data['FileName'] . '" alt="">' . "\n";
   $html .= '</a>' . "\n";
 
   echo $html;
