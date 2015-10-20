@@ -34,8 +34,22 @@ gulp.task('critical', function(){
     'base': 'docroot',
     'dest': './docroot/index.html'
   });
-})
+});
+
+gulp.task('js', function(){
+  return gulp.src([
+    './docroot/js/jquery-2.1.4.js',
+    './docroot/js/masonry.pkgd.js',
+    './docroot/js/lightbox.js',
+    './docroot/js/bootstrap.js'
+    ])
+    .pipe(uglify())
+    .pipe(concat('scripts.min.js'))
+    .pipe(gulp.dest('./docroot/js/'))
+});
+
+
 
 gulp.task('default', function(){
-  return runSequence('less', 'css', 'critical');
+  return runSequence('less', 'css', 'critical', 'js');
 });
