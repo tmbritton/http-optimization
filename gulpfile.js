@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
-    concatCSS = require('gulp-concat-css');
+    concatCSS = require('gulp-concat-css'),
+    critical = require('critical');
 
  
 gulp.task('less', function(){
@@ -26,6 +27,15 @@ gulp.task('css', function(){
     .pipe(gulp.dest('./docroot/css/'))
 });
 
+gulp.task('critical', function(){
+  critical.generate({
+    'inline': true,
+    'src': 'index.html',
+    'base': 'docroot',
+    'dest': './docroot/index.html'
+  });
+})
+
 gulp.task('default', function(){
-  return runSequence('less', 'css');
+  return runSequence('less', 'css', 'critical');
 });
